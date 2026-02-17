@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Reservasi Wisata Raja Ampat</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            max-width: 650px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 { color: #00695c; border-bottom: 2px solid #009688; padding-bottom: 10px; margin-top: 25px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; }
+        
+        input[type="text"], input[type="email"], input[type="password"], 
+        input[type="number"], input[type="date"], input[type="time"], 
+        input[type="url"], input[type="search"], select, textarea {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;
+        }
+
+        .btn-submit {
+            background-color: #00695c; color: white; padding: 15px; border: none; 
+            border-radius: 8px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer;
+            margin-top: 20px; transition: 0.3s;
+        }
+        .btn-submit:hover { background-color: #004d40; }
+        .btn-submit:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        .hint { font-size: 0.85em; color: #666; margin-top: 5px; }
+        .error-pax { color: #d32f2f; font-size: 0.85em; margin-top: 5px; font-weight: bold; display: none; }
+        
+        .flex-group { display: flex; gap: 15px; }
+        .flex-group div { flex: 1; }
+
+        .checkbox-group {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .checkbox-item { margin-bottom: 8px; display: block; }
+    </style>
+</head>
+<body>
+
+<header style="text-align: center; margin-top: 20px;">
+    <h1>Pemesanan Tiket Wisata Raja Ampat</h1>
+    <p>Lengkapi data perjalanan Anda di bawah ini</p>
+</header>
+
+<main class="container">
+    <form id="reservationForm" action="#" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="ID_Partner" value="PARTNER-RAJA-AMPAT-2026">
+
+        <section>
+            <h2>Identitas Pengunjung</h2>
+            <div class="form-group">
+                <label>Nama Lengkap:</label>
+                <input type="text" name="nama" required placeholder="Nama sesuai yang ada di KTP/Paspor">
+            </div>
+
+            <div class="form-group">
+                <label>Kategori Kewarganegaraan:</label>
+                <select name="kategori_wn" required>
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="Lokal">Wisatawan Lokal (WNI)</option>
+                    <option value="Mancanegara">Wisatawan Mancanegara (WNA)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Buat PIN Keamanan (6 Digit):</label>
+                <input type="password" name="pin" placeholder="PIN untuk akses tiket digital" pattern="[0-9]{6}" required>
+                <p class="hint">Digunakan untuk mengakses detail tiket digital di kemudian hari.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Detail Keberangkatan</h2>
+            <div class="form-group">
+                <label>Destinasi Utama:</label>
+                <input type="search" name="cari" placeholder="Contoh: Wayag, Piaynemo..." required>
+            </div>
+            
+            <div class="flex-group">
+                <div class="form-group">
+                    <label>Tanggal Berangkat:</label>
+                    <input type="date" name="tgl" required>
+                </div>
+                <div class="form-group">
+                    <label>Jam Kumpul:</label>
+                    <input type="time" name="jam" required>
+                </div>
+            </div>
+
+            <div class="flex-group">
+                <div class="form-group">
+                    <label>Jumlah Dewasa:</label>
+                    <input type="number" id="jml_dewasa" name="jml_dewasa" min="1" max="20" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah Anak:</label>
+                    <input type="number" id="jml_anak" name="jml_anak" min="0" max="19" value="0">
+                </div>
+            </div>
+            <p id="msg_error" class="error-pax">Total peserta (Dewasa + Anak) tidak boleh lebih dari 20 orang!</p>
+        </section>
+
+        <section>
+            <h2>Preferensi Personal & Opsi</h2>
+            
+            <div class="form-group">
+                <label>Link Profil Media Sosial:</label>
+                <input type="url" name="profil_url" placeholder="https://instagram.com/username" required>
+                <p class="hint">Untuk keperluan asuransi dan verivikasi identitas tambahan.</p>
+            </div>
+
+            <div class="form-group">
+                <label>Pilih Warna Seragam Kaos Grup:</label>
+                <input type="color" name="warna_seragam" value="#00695c" style="height: 50px; cursor: pointer;">
+                <p class="hint">Agar mudah dikenali oleh Tour Guide di keramaian.</p>
+            </div>
+
+            <div class="form-group">
+                <label>Fasilitas Ekstra:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" name="fasilitas[]" value="Asuransi"> Asuransi Perjalanan</label>
+                    <label class="checkbox-item"><input type="checkbox" name="fasilitas[]" value="Kamera"> Penyewaan Kamera </label>
+                    <label class="checkbox-item"><input type="checkbox" name="fasilitas[]" value="Dinner"> Paket Makan Malam Romantis</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Metode Pembayaran:</label>
+                <input type="radio" name="pay" value="Full" checked> Full Payment 
+                <input type="radio" name="pay" value="DP" style="margin-left: 15px;"> DP 50%
+            </div>
+
+            <div class="form-group">
+                <label>Unggah Scan KTP/Paspor:</label>
+                <input type="file" name="dokumen" accept="image/*,.pdf" required>
+            </div>
+        </section>
+
+        <button type="submit" id="btnSubmit" class="btn-submit">Kirim Form Pemesanan</button>
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="index.html" style="color: #00695c; text-decoration: none; font-weight: bold;">← Kembali ke Beranda Wisata</a>
+    </div>
+</main>
+
+<footer style="text-align: center; padding: 20px; color: #666;">
+    <p>© 2026 | Wisata Raja Ampat -</p>
+</footer>
+
+<script>
+    const inputDewasa = document.getElementById('jml_dewasa');
+    const inputAnak = document.getElementById('jml_anak');
+    const msgError = document.getElementById('msg_error');
+    const btnSubmit = document.getElementById('btnSubmit');
+
+    function checkTotalPax() {
+        const dewasa = parseInt(inputDewasa.value) || 0;
+        const anak = parseInt(inputAnak.value) || 0;
+        const total = dewasa + anak;
+
+        if (total > 20) {
+            msgError.style.display = 'block';
+            btnSubmit.disabled = true;
+        } else {
+            msgError.style.display = 'none';
+            btnSubmit.disabled = false;
+        }
+    }
+
+    inputDewasa.addEventListener('input', checkTotalPax);
+    inputAnak.addEventListener('input', checkTotalPax);
+</script>
+
+</body>
+</html>
