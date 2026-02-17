@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Wisata Raja Ampat</title>
+  <link rel="stylesheet" href="style.css">
+</head> 
+
+<body> 
+  <header> 
+    <h1>Wisata Raja Ampat</h1> 
+    <p>Surga Bahari di Timur Indonesia</p> 
+    <nav> 
+      <a href="#info">Informasi</a>
+      <a href="#galeri">Galeri</a> 
+      <a href="#media">Media</a> 
+      <a href="#fasilitas">Fasilitas</a> 
+      <a href="#rencana">Rencana</a> 
+      <a href="#harga">Harga</a> 
+      <a href="#lokasi">Lokasi</a>
+      <div style="text-align:center; margin-top:20px;">
+        <a href="formulir_pemesanan.html" style="background-color: #00796b; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
+          Pesan Tiket Sekarang
+        </a>
+      </div>
+    </nav> 
+  </header> 
+
+  <main> 
+    <section id="info"> 
+      <h2>Wisata Raja Ampat</h2> 
+      <p> <strong>Raja Ampat</strong> merupakan destinasi wisata alam yang terletak di Papua Barat. Daerah ini terkenal dengan <mark>keindahan lautnya</mark> yang luar biasa, gugusan pulau karst yang unik, serta perairan jernih berwarna biru. Raja Ampat juga dikenal sebagai <mark>surga bahari di Timur Indonesia</mark> karena memiliki kekayaan biota laut yang sangat beragam. </p> 
+      <p> Wisatawan dapat menikmati berbagai aktivitas <mark>wisata alam</mark> seperti <em>snorkeling</em>, <em>diving</em>, dan menjelajahi pulau-pulau kecil yang masih alami. Keindahan bawah laut Raja Ampat menjadikannya salah satu tujuan wisata terbaik di Indonesia. </p> 
+    </section> 
+
+   <section id="galeri">
+  <h2>Galeri Wisata</h2> 
+  <div class="carousel-container"> 
+    <div id="slider" class="carousel-track media-container"> 
+        <img src="https://i.ibb.co.com/204BLp1N/Quality-Restoration-AI-UHD-foto-raja-ampat-1-1.jpg" alt="Dermaga dan penginapan pantai Raja Ampat">
+        <img src="https://i.ibb.co.com/tpsP47P4/quality-restoration-20260217164711754.jpg" alt="Sunset di pulau kast Raja Ampat">
+        <img src="https://i.ibb.co.com/21DPkzCb/quality-restoration-20260217164911857.jpg" alt="Laguna wayag dan speedboat dari udara">
+        <img src="https://i.ibb.co.com/KMHbNZ9/quality-restoration-20260217165026794.jpg" alt="Resor terapung dengan latar gunung">
+        <img src="https://i.ibb.co.com/Vhp1NX9/quality-restoration-20260217165119508.jpg" alt="Wisatawan di bukit karang Raja Ampat">
+        <img src="https://i.ibb.co.com/q3CLsKty/quality-restoration-20260217165153410.jpg" alt="panorama pulau dari balkon kayu">
+        <img src="https://i.ibb.co.com/TBmQPwXP/quality-restoration-20260217165319565.jpg" alt="Terumbu karang dan ikan tropis">
+        <img src="https://i.ibb.co.com/Jwgs2nfj/IMG-20260217-WA0030.jpg" alt="Diving bersama penyu hijau">
+        <img src="https://i.ibb.co.com/DHSPtNSy/IMG-20260217-WA0031.jpg" alt="Penyu sisik di bawah laut">
+    </div>
+     <button class="nav-btn prev" onclick="geser(-1)">&lt;</button> 
+    <button class="nav-btn next" onclick="geser(1)">&gt;</button> 
+  </div>
+</section>
+
+      <script>
+        let indeks = 0;
+        function geser(arah) {
+          const slider = document.getElementById('slider');
+          const totalFoto = slider.children.length;
+          indeks += arah;
+          
+          // Memutar slider jika sudah di ujung
+          if (indeks >= totalFoto) indeks = 0;
+          if (indeks < 0) indeks = totalFoto - 1;
+          
+          slider.style.transform = `translateX(${-indeks * 100}%)`;
+        }
+      </script>
+    </section> 
+
+    <section id="media"> 
+      <h2>Video & Audio Wisata</h2> 
+      <div class="video-wrapper"> 
+        <video controls poster="https://i.ibb.co.com/Jwc8DbZN/IMG-20260208-WA0014.jpg">
+          <source src="Video-MP4-raja-ampat.mp4" type="video/mp4">
+          Browser Anda tidak mendukung tag video.
+        </video>
+      </div>
+
+      <h3>Audio Tour</h3>
+      <audio controls>
+        <source src="audio-MP3-raja-ampat.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+      </audio>
+    </section>
+
+    <section id="fasilitas"> 
+      <h2>Fasilitas Wisata</h2> 
+      <ul> 
+        <li>Penginapan & Homestay</li> 
+        <li>Transportasi Laut</li> 
+        <li>Pemandu Wisata</li> 
+        <li>Area Snorkeling</li> 
+      </ul> 
+    </section> 
+
+    <section id="rencana"> 
+      <h2>Rencana Perjalanan</h2> 
+      <ol> 
+        <li>Tiba di Sorong</li> 
+        <li>Penyeberangan ke Raja Ampat</li> 
+        <li>Wisata Pulau</li> 
+        <li>Kembali</li> 
+      </ol> 
+    </section> 
+
+    <section id="harga"> 
+      <h2>Harga Tiket Masuk</h2> 
+      <table border="1"> 
+        <thead> 
+          <tr> 
+            <th rowspan="2">Kategori</th> 
+            <th colspan="2">Harga</th> 
+          </tr> 
+          <tr> 
+            <th>Anak-anak</th> 
+            <th>Dewasa</th> 
+          </tr> 
+        </thead> 
+        <tbody> 
+          <tr> 
+            <td>Wisatawan Lokal</td> 
+            <td>Rp250.000</td> 
+            <td>Rp500.000</td> 
+          </tr> 
+          <tr> 
+            <td>Wisatawan Mancanegara</td> 
+            <td>Rp500.000</td> 
+            <td>Rp1.000.000</td> 
+          </tr> 
+        </tbody> 
+        <tfoot> 
+          <tr> 
+            <td colspan="3">Harga dapat berubah sewaktu-waktu</td> 
+          </tr> 
+        </tfoot> 
+      </table> 
+    </section> 
+
+    <aside> 
+      <section id="lokasi"> 
+        <h2>Lokasi Wisata</h2> 
+        <p> <a href="https://www.google.com/maps" target="_blank"> Lihat Lokasi di Google Maps </a> </p> 
+      </section> 
+    </aside>
+  </main> 
+
+  <footer> 
+    <p>© 2026 | Wisata Raja Ampat</p>
+  </footer>
+</body>
+</html>
